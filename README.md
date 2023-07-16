@@ -14,3 +14,7 @@ To do so, we have to set a new `core.hooksPath` for the `git` command:
 ```
 
 We can also set this configuration globally including the `--global` option, and change the path of the hooks, which in our example above is `.hooks/`.  
+
+---
+
+*Daniel R. Torres Ruiz © 2023*
