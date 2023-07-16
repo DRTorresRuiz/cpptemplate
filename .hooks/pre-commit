@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cpp_staged_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.cpp$')
+for staged_file in $cpp_staged_files; do
+  # If the file is not formatted according to the Google style guide, format it
+  if ! git cat-file -p :./$staged_file | clang-format --style="Google" --dry-run --Werror --sort-includes >/dev/null 2>&1; then
+    clang-format --style="Google" --sort-includes -i $staged_file
+    formatter_ran=true
+  fi
+done
+
+# If the formatter ran, fail the commit, so the user can add the changes to the commit
+if [ "$formatter_ran" = true ]; then
+  echo "Error: Clang-format: Some files were formatted. Please add them to your commit."
+  exit 1
+fi
