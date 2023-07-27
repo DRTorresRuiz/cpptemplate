@@ -31,3 +31,25 @@ target_link_libraries(main
   PRIVATE
     ${LIBRARY_NAME}
 )
+
+IF(CMAKE_BUILD_TYPE MATCHES Debug)
+  enable_testing()
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs --coverage")
+  file(GLOB TEST_SOURCES ${LIBRARY_PATH}/tests/*.cpp)
+  
+  find_package(GTest)
+
+  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+  add_executable(tests ${TEST_SOURCES})
+  target_link_libraries(tests
+    PRIVATE
+      ${LIBRARY_NAME}
+      GTest::gtest
+      GTest::gtest_main
+      gcov
+  )
+
+  include(GoogleTest)
+  gtest_discover_tests(tests)
+ENDIF()
