@@ -2,4 +2,6 @@
 #include <gtest/gtest.h>
 #include <hello.h>
 
-TEST(hello, BasicAssertions) { EXPECT_EQ("Hello World!", greet("World")); }
+TEST(hello, BasicAssertions) {
+  EXPECT_EQ("Hello World!", hello::greet("World"));
+}
