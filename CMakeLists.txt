@@ -8,7 +8,12 @@ include(FetchContent)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-project(hello)
+project(
+  hello
+  VERSION 0.1.0
+  DESCRIPTION "Hello world library. C++ Template."
+  LANGUAGES CXX
+)
 
 FetchContent_Declare(fmt
   GIT_REPOSITORY https://github.com/fmtlib/fmt.git
