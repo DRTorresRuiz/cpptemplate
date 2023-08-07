@@ -1,7 +1,7 @@
 #!/bin/bash
 
-cpp_staged_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.cpp$')
-for staged_file in $cpp_staged_files; do
+staged_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(cpp|h)$')
+for staged_file in $staged_files; do
   # If the file is not formatted according to the Google style guide, format it
   if ! git cat-file -p :./$staged_file | clang-format --style="Google" --dry-run --Werror --sort-includes --assume-filename=$staged_file >/dev/null 2>&1; then
     clang-format --style="Google" --sort-includes -i $staged_file
