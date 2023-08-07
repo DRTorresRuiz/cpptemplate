@@ -6,6 +6,7 @@ for staged_file in $staged_files; do
   if ! git cat-file -p :./$staged_file | clang-format --style="Google" --dry-run --Werror --sort-includes --assume-filename=$staged_file >/dev/null 2>&1; then
     clang-format --style="Google" --sort-includes -i $staged_file
     formatter_ran=true
+    echo "Clang-format: $staged_file was formatted."
   fi
 done
 
