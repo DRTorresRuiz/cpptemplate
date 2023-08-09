@@ -1,5 +1,7 @@
-# C++ template
+![Template](https://img.shields.io/badge/Template-purple)
+![Programming Language - C++](https://img.shields.io/badge/Programming_language-C%2B%2B-green)
 
+[![CodeFactor](https://www.codefactor.io/repository/github/drtorresruiz/cpptemplate/badge)](https://www.codefactor.io/repository/github/drtorresruiz/cpptemplate)
 
 ## Get git hooks working
 
